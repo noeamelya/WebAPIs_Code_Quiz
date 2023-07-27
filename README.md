@@ -45,7 +45,7 @@ The following animation demonstrates the application functionality:
 
 ## Useful links
 
-
+## LICENSE
 
 
 ## contact 
