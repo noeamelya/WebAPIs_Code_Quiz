@@ -3,12 +3,13 @@ var startButton = document.querySelector("#start");
 var timerEl = document.querySelector("#time"); 
 var questionsEl = document.querySelector("#questions"); 
 var choicesEl = document.querySelector("#choices"); 
+var submitButton = document.querySelector("#submit");
 var initilsInput = document.querySelector("#initials");
 var feedbackEl = document.querySelector("#feedback");
 
 //start work on quiz state varibles
 var questionIndex = 0;
-var time = questions.length * 15;
+var time = questions.length * 15 ;
 var timeId;
 
 // create function to hide id : start-screen
@@ -30,19 +31,19 @@ function startQuiz (){
 // create function start choosing the questions
 function getQuestion (){
     // question object from array
-    var currentQuestion = questions[currentQuestionIndex]
+    var currentQuestion = questions[questionIndex];
     // title with current question 
-    var questionEl = document.getElementById("question-title");
-    questionElEl.textContent = currentQuestion.question;
+    var titleEl = document.getElementById("question-title");
+    titleEl.textContent = currentQuestion.question;
     // clear out any old question choices
     choicesEl.innerHTML = "";
     //make a loop over choices
-    currentQuestion.choices.forEach(function(choices, i){
+    currentQuestion.choices.forEach(function(choice, i){
         // create new button for each choice
         var choiceNode = document.createElement("button");
         //setting attribute class & value
         choiceNode.setAttribute("class","choice");
-        choiceNode.setAttribute("value","choice");
+        choiceNode.setAttribute("value", choice);
         choiceNode.textContent = i + 1 + ". " + choice;
 
         // click event listener to each choice
@@ -55,7 +56,7 @@ function getQuestion (){
 
 // create function to check if user got wrong
 function questionClick (){
-    if (this.value !== questions[currentQuestionIndex].answer){
+    if (this.value !== questions[questionIndex].answer){
         time -= 15;
         if (time < 0){
             time = 0;
@@ -78,10 +79,10 @@ function questionClick (){
   }, 1000);
 
   // next question
-  currentQuestionIndex++;
+  questionIndex++;
 
   // time checker
-  if (currentQuestionIndex === questions.length) {
+  if (questionIndex === questions.length) {
     quizEnd();
   } else {
     getQuestion();
@@ -101,7 +102,7 @@ function endQuiz(){
 
     // now hide the question section
     questionsEl.setAttribute("class", "hide"); 
-
+}
     //update time
     function clockTick(){
         time--;
@@ -110,19 +111,19 @@ function endQuiz(){
             endQuiz();
         }
     }
-}
+
 
 
 // Create function to get value of input box
 function saveHighscore() {
-var initials = initialsEl.value.trim();
+var initials = initialsInput.value.trim();
 if (initials !== ""){
     //save scores from localstorage
     var highscores = JSON.parse(window.localStorage.getItem("highscores")) || [];
     // format new score object for current user
     var newScore = {
         score: time,
-        initials: initials
+        initials: initials,
     };
 
     //save to localstorage 
@@ -142,9 +143,9 @@ function checkEnter(event){
 };
 
 //Now ready to ssubmit initials
-submitBtn.onclick = saveHighscore;
+submitButton.onclick = saveHighscore;
 
 //Now user can start the quiz
-startBtn.onclick = startQuiz;
+startButton.onclick = startQuiz;
 
-initialsEl.onkeyup = checkEnter;
+initialsInput.onkeyup = checkEnter;
