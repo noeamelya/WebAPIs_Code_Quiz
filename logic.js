@@ -95,4 +95,56 @@ function endQuiz(){
     var endScreenEl = document.getElementById("end-screen");
     endScreenEl.removeAttribute("class");
 
+    // show final score
+    var finalScoreEl = document.getElementById("final-score");
+    finalScoreEl.textContent = time;
+
+    // now hide the question section
+    questionsEl.setAttribute("class", "hide"); 
+
+    //update time
+    function clockTick(){
+        time--;
+        timerEl.textContent = time;
+        if ( time <= 0 ){
+            endQuiz();
+        }
+    }
 }
+
+
+// Create function to get value of input box
+function saveHighscore() {
+var initials = initialsEl.value.trim();
+if (initials !== ""){
+    //save scores from localstorage
+    var highscores = JSON.parse(window.localStorage.getItem("highscores")) || [];
+    // format new score object for current user
+    var newScore = {
+        score: time,
+        initials: initials
+    };
+
+    //save to localstorage 
+    highscores.push(newScore);
+    window.localStorage.setItem("highscores"), JSON.stringify(highscores);
+
+    //direct to the next page
+    window.location.href = "highscores.html"
+}
+};
+
+// create function to represents the enter key
+function checkEnter(event){
+    if (event.key === "enter"){
+        saveHighscore();
+    }
+};
+
+//Now ready to ssubmit initials
+submitBtn.onclick = saveHighscore;
+
+//Now user can start the quiz
+startBtn.onclick = startQuiz;
+
+initialsEl.onkeyup = checkEnter;
