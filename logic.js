@@ -142,7 +142,7 @@ function checkEnter(event){
     }
 };
 
-//Now ready to ssubmit initials
+//Now ready to submit initials
 submitButton.onclick = saveHighscore;
 
 //Now user can start the quiz
