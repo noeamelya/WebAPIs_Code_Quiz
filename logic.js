@@ -59,7 +59,7 @@ function showQuestion (){
 // create function to check if user got wrong
 function questionClick (){
     if (this.value !== questions[questionIndex].answer){
-        time = 15;
+        time -= 15;
         if (time < 0){
             time = 0;
         
@@ -94,7 +94,7 @@ function questionClick (){
 
 // create function to stop the timer
 function endQuiz(){
-    clearInterval(timeId);
+    clearInterval(timerId);
     // display end screen
     var endScreenEl = document.getElementById("end-screen");
     endScreenEl.removeAttribute("class");
@@ -105,20 +105,21 @@ function endQuiz(){
 
     // now hide the question section
     questionsEl.setAttribute("class", "hide"); 
-}
-    //update time
-    function clockTick(){
-        time--;
-        timerEl.textContent = time;
-        if ( time <= 0 ){
+};
+//update time
+function clockTick(){
+    time--;
+    timerEl.textContent = time;
+    // run out of time
+        if (time <= 0){
             endQuiz();
-        }
-    }
+        } 
+};
 
 // Create function to get value of input box
 function saveHighscore() {
 var initials = initialsInput.value.trim();
-if (initials !== ""){
+if (initials != ""){
     //save scores from localstorage
     var highscores = JSON.parse(window.localStorage.getItem("highscores")) || [];
     // format new score object for current user
@@ -144,12 +145,6 @@ function checkEnter(event){
 };
 
 /* Add event listener */
-// //Now ready to submit initials
-// submitButton.addEventListener("click", saveHighscore);
-
-// //Now user can start the quiz
-// startButton.addEventListener("click", startQuiz);
-
 
 // submit initials
 submitButton.onclick = saveHighscore;
@@ -157,4 +152,4 @@ submitButton.onclick = saveHighscore;
 // start quiz
 startButton.onclick = startQuiz;
 
-initialsEl.onkeyup = checkEnter;
+initialsInput.onkeyup = checkEnter;
