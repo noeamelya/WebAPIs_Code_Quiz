@@ -35,18 +35,21 @@ The following animation demonstrates the application functionality:
 
 ## Diployed site
 
-[Checkout my diployed site project]()
+[Checkout my diployed site project](https://noeamelya.github.io/WebAPIs_Code_Quiz/)
 
-[My gitHub project]()
-
-
-## Outcome project 
+[My gitHub project](https://github.com/noeamelya/WebAPIs_Code_Quiz)
 
 
 ## Useful links
+[Watch out - ref video about Quiz JavaScrript ](https://www.youtube.com/watch?v=-cX5jnQgqSM)
+
+[Use the Notion API to Create a Quiz with JavaScript ](https://www.sitepoint.com/notion-api-javascript-quiz/)
+
+
+[Quiz App Using Vanilla JavaScript | With Open Trivia DB API](https://www.youtube.com/watch?v=-cX5jnQgqSM)
 
 ## LICENSE
-MI
+MIT
 
 
 ## contact 
