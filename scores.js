@@ -1,4 +1,4 @@
-//create function to print highscores
+// create function to print highscores
 function printHighscores() {
     //get scores from localstorage
     var highscores = JSON.parse(window.localStorage.getItem("highscores")) || [];
@@ -28,3 +28,7 @@ function printHighscores() {
   
   // run function when page loads
   printHighscores();
+
+
+
+  
