@@ -9,9 +9,10 @@ function printHighscores() {
     });
   
     highscores.forEach(function(score) {
-      // create li tag for each high score
+      // Show the score list on score board
       var liTag = document.createElement("li");
       liTag.textContent = score.initials + " - " + score.score;
+      liTag.setAttribute("data-index", i);
   
       // display on page
       var olEl = document.getElementById("highscores");
@@ -31,4 +32,3 @@ function printHighscores() {
 
 
 
-  
