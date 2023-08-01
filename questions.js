@@ -41,7 +41,7 @@ answer: "Math.round(7,5)"
 choices: ["False", "True"],
 answer: "False"
 },
-{question: "Which event occurs when the user clicks on an HTML eelement?",
+{question: "Which event occurs when the user clicks on an HTML element?",
 choices: ["onclick", "onchange", "onmouseclick", "onmouseover"],
 answer: "onclick"
 },
